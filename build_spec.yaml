@@ -1,30 +1,6 @@
-# Standard OCI DevOps Build Spec
 version: 0.1
 component: build
-timeoutInSeconds: 600
-runAs: root
-shell: /bin/bash
-
-env:
-  # Define variables that can be used throughout the pipeline
-  variables:
-    PROJECT_NAME: "oci-python-app"
-
 steps:
   - type: Command
-    name: "Build Docker Image"
-    command: |
-      docker build -t ${PROJECT_NAME} .
-    timeoutInSeconds: 300
-
-  - type: Command
-    name: "Tag Docker Image"
-    command: |
-      # Replace <REGION> and <NAMESPACE> with actual values when configuring OCI
-      # docker tag ${PROJECT_NAME} <REGION>.ocir.io/<NAMESPACE>/${PROJECT_NAME}:${OCI_BUILD_RUN_ID}
-      echo "Image ${PROJECT_NAME} built successfully."
-
-outputArtifacts:
-  - name: python-app-image
-    type: DOCKER_IMAGE
-    location: ${PROJECT_NAME}
+    name: Build Step
+    command: echo "Hello"
